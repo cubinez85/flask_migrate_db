@@ -1,0 +1,29 @@
+<html>
+    <head>
+      {% if title %}
+      <title>{{ title }} - migrate_project</title>
+      {% else %}
+      <title>Welcome to migrate_project</title>
+      {% endif %}
+    </head>
+    <body>
+        <div>
+    migrate_project:
+    <a href="{{ url_for('index') }}">Home</a>
+    <a href="{{ url_for('login') }}">Login</a>
+    <a href="{{ url_for('tables') }}">Tables</a>
+    <a href="{{ url_for('admin') }}">Admin</a>
+        </div>
+        <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </body>
+</html>
