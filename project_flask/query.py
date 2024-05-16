@@ -12,6 +12,13 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://cubinez85:123@lo
 db = SQLAlchemy(app)
 
 with app.app_context():
+    users = []
+    users.append(User(username="cubinez85"))
+    users.append(User(username="qwerty"))
+    db.session.add_all(users)
+    db.session.commit()
+
+
 
 #    res = db.session.query(User, Post).join(Post, User.id == Post.user_id).all()
  #   for i in res:
